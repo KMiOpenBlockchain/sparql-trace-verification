@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<title>Test 4 - Validate a Linkchain Anchored Comunica Query</title>
+	<title>Test 4 - Verify a Linkchain Anchored Comunica Query</title>
 
 	<link href="./app.css" rel='stylesheet' type='text/css'>
 
@@ -26,7 +26,7 @@
 	</div>
 
 	<div class="holder">
-		<h2>Validate a Linkchain Anchored Comunica Query</h2>
+		<h2>Verify a Linkchain Anchored Comunica Query</h2>
 
 		<div class="innerholder" style="padding-top:10px;">
 
@@ -45,7 +45,7 @@
 
 			<div class="panel" style="clear:both; float: left;margin-top:20px;">
 				<span>
-					<h3>Validate an Anchored Query</h3>
+					<h3>Verify an Anchored Query</h3>
 
 					Either load from Stored Data below, choose the files to use, or paste the data into the boxes.
 					<br /><br />
@@ -68,10 +68,10 @@
 					<textarea name="anchoredMetadataInputArea" id="anchoredMetadataInputArea" class="textareastyle"></textarea>
 
 					<br /><br />
-					<button class="buttonmetamask" id="validateButton" onclick="validateQuery()">Validate</button>
+					<button class="buttonmetamask" id="validateButton" onclick="validateQuery()">Verify</button>
 					<br /><br />
 
-					<label>Validation Results</label>
+					<label>Verification Results</label>
 					<br />
 					<textarea id="validationResults" class="textareastyle"></textarea>
 					<span class="infobig">Verification results contain two arrays, 'verified' and 'unverified', in N-Quads/N-Triples format, for quads/triples which passed or failed verification, respectively.</span>
@@ -93,7 +93,7 @@
 								<th width="15">SPARQL Trace Data</th>
 								<th width="15">Anchored MerQL Metadata</th>
 								<th width="10">Granular Anchored MerQL Metadata</th>
-								<th width="10">Validate</th>
+								<th width="10">Verify</th>
 							</tr>
 						</thead>
 						<tbody id="storedDataTable" style="background-color: white;"></tbody>

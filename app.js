@@ -249,7 +249,7 @@ async function validateQuery() {
 		if (queryRDFInputArea.value != "" && queryRDFInputArea.value != null) {
 			rdfInputData = queryRDFInputArea.value;
 		} else {
-			alert("Please load the query RDF data to validate");
+			alert("Please load the query RDF data to verify");
 			return;
 		}
 
