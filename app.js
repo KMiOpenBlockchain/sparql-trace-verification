@@ -180,7 +180,7 @@ async function switchNetwork(networkObj) {
 		console.log('provider:', provider);
 		signer = provider.getSigner();
 		console.log('signer:', signer);
-		await selectNetwork();
+		//await selectNetwork();
 
 	} catch (switchError) {
 		// This error code indicates that the chain has not been added to MetaMask.
@@ -198,8 +198,8 @@ async function switchNetwork(networkObj) {
  */
 function enableMetaMaskButtons() {
 
-	const validateButton = document.getElementById('validateButton');
-	validateButton.disabled = false;
+	const verifyButton = document.getElementById('verifyButton');
+	verifyButton.disabled = false;
 }
 
 /**
@@ -238,10 +238,10 @@ async function readLocalInputData(filefieldname, inputareaname, prefillAreasArra
 	}
 }
 
-async function validateQuery() {
+async function verifyQuery() {
 
 	let options = {}
-	const validationResults = document.getElementById('validationResults');
+	const verifyResults = document.getElementById('verifyResults');
 
 	try {
 		const queryRDFInputArea = document.getElementById('queryRDFInputArea');
@@ -258,11 +258,11 @@ async function validateQuery() {
 		if (anchoredMetadataInputArea.value != "" && anchoredMetadataInputArea.value != null) {
 			granularAnchoredData = anchoredMetadataInputArea.value
 		} else {
-			alert("Please load the anchored metadata to use for validation");
+			alert("Please load the anchored metadata to use for verification");
 			return;
 		}
 
-		validationResults.value = "Depending on the input size, this can take a while. Please wait...";
+		verifyResults.value = "Depending on the input size, this can take a while. Please wait...";
 
 		const handler = async function(anchor, options) {
 			let reply = await readMerQLAnchorContract(anchor, options);
@@ -271,11 +271,11 @@ async function validateQuery() {
 		}
 		const output = await linkchains.verify(rdfInputData, granularAnchoredData, options, handler);
 
-		validationResults.value = JSON.stringify(output, null, 2);
+		verifyResults.value = JSON.stringify(output, null, 2);
 
 	} catch (e) {
 		console.log(e);
-		validationResults.value = e.message;
+		verifyResults.value = e.message;
 	}
 }
 
@@ -288,7 +288,7 @@ async function readMerQLAnchorContract(anchor, option) {
 
 	if (anchor.network && anchor.network.name != currentNetwork.name) {
 		//alert("Please switch networks. This data was anchored on: "+anchor.network.name);
-		//throw new Error("Wrong network detected to validate against");
+		//throw new Error("Wrong network detected to verify against");
 		await switchNetwork(anchor.network);
 	}
 
@@ -299,7 +299,7 @@ async function readMerQLAnchorContract(anchor, option) {
 		return contractcache[contractAddress];
 	}
 
-	const validateResult = document.getElementById('validateResult');
+	const verifyResults = document.getElementById('verifyResults');
 	const abi = contract.MerQLAnchorContract.abi;
 
 	try {
@@ -335,7 +335,7 @@ async function readMerQLAnchorContract(anchor, option) {
 
 	} catch (e) {
 		console.log(e);
-		validateResult.value = e;
+		verifyResults.value = e;
 	}
 }
 
@@ -370,7 +370,7 @@ function loadStoredData() {
 		const anchoredDataColumn = row.insertCell(4);
 		const anchoredColumn = row.insertCell(5);
 		const granularAnchoredColumn = row.insertCell(6);
-		const validateColumn = row.insertCell(7);
+		const verifyColumn = row.insertCell(7);
 
 		// Add some text to the new cells:
 		dateColumn.innerHTML = (new Date(next.date)).toLocaleDateString('en-GB')+" - "+(new Date(next.date)).toLocaleTimeString('en-GB');
@@ -439,15 +439,15 @@ function loadStoredData() {
 		};
 		granularAnchoredColumn.appendChild(granularAnchoredButton);
 
-		let validateButton = document.createElement("button");
-		validateButton.innerHTML = "Load this Data";
-		validateButton.className = "button";
-		validateButton.data = {"source": next.anchoredData, "meta": next.granularAnchoredResults };
-		validateButton.onclick = function () {
+		let verifyButton = document.createElement("button");
+		verifyButton.innerHTML = "Load this Data";
+		verifyButton.className = "button";
+		verifyButton.data = {"source": next.anchoredData, "meta": next.granularAnchoredResults };
+		verifyButton.onclick = function () {
 			document.getElementById('queryRDFInputArea').value = this.data.source;
 			document.getElementById('anchoredMetadataInputArea').value = this.data.meta;
 		};
-		validateColumn.appendChild(validateButton);
+		verifyColumn.appendChild(verifyButton);
 	}
 
 }
