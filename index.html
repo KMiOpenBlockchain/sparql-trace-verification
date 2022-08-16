@@ -34,6 +34,8 @@
 				<span>
 					<h3>Connect to MetaMask (Select a testnet)</h3>
 					<br />
+					(Requires a configured Metamask wallet - see <a href="https://github.com/KMiOpenBlockchain/isws2022-demonstrator/blob/main/README.md#metamask-and-the-rinkby-ethereum-testnet">here</a>)
+					<br />
 					<button class="buttonmetamask" name="enableEthereumButton" id="enableEthereumButton" disabled="false" onclick="loginToMetaMask()">Connect to MetaMask</button>
 					<label for="ethereumaccount">Ethereum Account: </label>
 					<label id="ethereumaccount"></label>
@@ -50,12 +52,14 @@
 					<label for="RDFInputFile">Choose a file of JSON RDF Query data:</label>   <input type="file" id="RDFInputFile" name="RDFInputFile">
 					<button class="button" id="readRDFInputFileButton" name="readRDFInputFileButton">Read File</button>
 					<br /><br />
-					<label for="queryRDFInputArea">JSON RDF Query data</label>
+					<label for="queryRDFInputArea">SPARQL Trace Data:</label>
+					<br />
+					(JSON-LD object containing query, sources, results and query plans)
 					<br />
 					<textarea name="queryRDFInputArea" id="queryRDFInputArea" class="textareastyle"></textarea>
 
 					<br /><br />
-					<label for="anchoredMetadataFile">Choose a file of JSON RDF Query anchored metadata:</label>   <input type="file" id="anchoredMetadataFile" name="anchoredMetadataFile">
+					<label for="anchoredMetadataFile">Choose a file of anchored MerQL metadata:</label>   <input type="file" id="anchoredMetadataFile" name="anchoredMetadataFile">
 					<button class="button" id="readAnchoredMetadataButton" name="readAnchoredMetadataButton">Read File</button>
 
 					<br /><br />
@@ -70,6 +74,8 @@
 					<label>Validation Results</label>
 					<br />
 					<textarea id="validationResults" class="textareastyle"></textarea>
+					Verification results contain two arrays, 'verified' and 'unverified', in N-Quads/N-Triples format, for quads/triples which passed or failed verification, respectively.
+					<br />
 
 				</span>
 			</div>
@@ -84,9 +90,9 @@
 								<th width="10">Sources</th>
 								<th width="15">Query</th>
 								<th width="15">Query Result</th>
-								<th width="15">Anchored Data</th>
-								<th width="15">Anchored Metadata</th>
-								<th width="10">Granular Anchored Metadata</th>
+								<th width="15">SPARQL Trace Data</th>
+								<th width="15">Anchored MerQL Metadata</th>
+								<th width="10">Granular Anchored MerQL Metadata</th>
 								<th width="10">Validate</th>
 							</tr>
 						</thead>
